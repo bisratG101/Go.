@@ -1,0 +1,20 @@
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*"
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+
+	password := make([]byte, 12)
+	for i := range password {
+		password[i] = chars[rand.Intn(len(chars))]
+	}
+
+	fmt.Println("Generated Password:", string(password))
+}
