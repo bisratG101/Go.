@@ -1,0 +1,39 @@
+package main
+
+import "fmt"
+
+type Expense struct {
+	Name   string
+	Amount float64
+}
+
+func main() {
+	var expenses []Expense
+	var n int
+
+	fmt.Print("How many expenses do you want to enter? ")
+	fmt.Scan(&n)
+
+	for i := 0; i < n; i++ {
+		var e Expense
+
+		fmt.Printf("\nExpense %d\n", i+1)
+		fmt.Print("Name: ")
+		fmt.Scan(&e.Name)
+
+		fmt.Print("Amount: ")
+		fmt.Scan(&e.Amount)
+
+		expenses = append(expenses, e)
+	}
+
+	var total float64
+
+	fmt.Println("\nExpenses:")
+	for _, e := range expenses {
+		fmt.Printf("- %s: %.2f\n", e.Name, e.Amount)
+		total += e.Amount
+	}
+
+	fmt.Printf("\nTotal Spent: %.2f\n", total)
+}
